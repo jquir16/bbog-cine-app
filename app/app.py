@@ -1,6 +1,8 @@
 from flask import Flask
 from flask_cors import CORS
-from controllers.movie_controller import get_movies, create_movie, update_movie, delete_movie
+from controllers.movie_controller import get_movies, create_movie
+from controllers.reservation_controller import get_reservations, insert_reservation
+from controllers.rooms_controller import get_rooms
 
 app = Flask(__name__)
 CORS(app)
@@ -15,13 +17,17 @@ def list_movies():
 def add_movie():
     return create_movie()
 
-@app.route('/movies/<int:movie_id>', methods=['PUT'])
-def modify_movie(movie_id):
-    return update_movie(movie_id)
+@app.route('/reservations', methods=['GET'])
+def list_reservations():
+    return get_reservations()
 
-@app.route('/movies/<int:movie_id>', methods=['DELETE'])
-def remove_movie(movie_id):
-    return delete_movie(movie_id)
+@app.route('/reservations', methods=['POST'])
+def add_reservation():
+    return insert_reservation()
+
+@app.route('/rooms', methods=['GET'])
+def list_rooms():
+    return get_rooms()
 
 def main():
     app.run()

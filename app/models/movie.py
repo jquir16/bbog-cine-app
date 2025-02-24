@@ -22,5 +22,5 @@ class Movie:
             "start_date": self.start_date,
             "end_date": self.end_date,
             "runtime": self.runtime,
-            "mpaa": self.mpaa
+            "mpaa": self.mpaa,
         }

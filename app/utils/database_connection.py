@@ -5,7 +5,6 @@ import sys
 import os
 
 def connect_to_rds():
-    print('Connecting to RDS...', DATABASE_CONFIG)
     try:
         connection = psycopg2.connect(
             host=DATABASE_CONFIG['DATABASE_ENDPOINT'],
@@ -24,12 +23,16 @@ def execute_query(query, params=None, fetch=False):
     conn = connect_to_rds()
     try:
         cursor = conn.cursor()
+        print(f"Executing query: {query}")
+        print(f"With parameters: {params}")
         cursor.execute(query, params)
         if fetch:
             result = cursor.fetchall()
+            print(f"Query result: {result}")
         else:
             conn.commit()
             result = None
+            print("Transaction committed")
         cursor.close()
         return result
     except Exception as e:
@@ -37,3 +40,4 @@ def execute_query(query, params=None, fetch=False):
         return None
     finally:
         conn.close()
+        print("Connection closed")
