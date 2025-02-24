@@ -1,0 +1,10 @@
+{
+    "vars": {
+        "DATABASE_ENDPOINT": "cinema-db.cfuhh7iuk0f6.us-east-1.rds.amazonaws.com",
+        "PORT": 5432,
+        "DATABASE_NAME": "cinema-db",
+        "DATABASE_USER": "postgres",
+        "DATABASE_PASSWORD": "postgres",
+        "DATABASE_REGION": "us-east-1a"
+    }
+}
